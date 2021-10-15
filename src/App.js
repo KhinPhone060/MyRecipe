@@ -8,7 +8,7 @@ import HomeScreen from './component/home';
 class App extends Component {
   render() {
     return (
-      <SafeAreaView>
+      <SafeAreaView style={{flex: 1}}>
         {this.props.auth.isAuth ? <HomeScreen /> : <AuthScreen />}
       </SafeAreaView>
     );
