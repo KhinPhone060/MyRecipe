@@ -1,11 +1,17 @@
 import React from 'react';
-import {Text, View} from 'react-native';
+import {Text, View, ScrollView} from 'react-native';
+import {Input, Button} from 'react-native-elements';
 
 const Profile = () => {
   return (
-    <View>
-      <Text>Profile Screen</Text>
-    </View>
+    <ScrollView>
+      <Input
+        placeholder="Email"
+        value={''}
+        onChangeText={text => console.log('hey')}
+      />
+      <Input placeholder="Password" />
+    </ScrollView>
   );
 };
 export default Profile;

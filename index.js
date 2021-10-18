@@ -10,6 +10,7 @@ import {Provider} from 'react-redux';
 import {applyMiddleware, compose, createStore} from 'redux';
 import PromiseMiddleware from 'redux-promise';
 import reducers from './src/store/reducers';
+import {DarkTheme, Provider as PaperProvider} from 'react-native-paper';
 
 const composedEnhancer = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 const store = createStore(
@@ -18,7 +19,9 @@ const store = createStore(
 );
 const ReduxApp = () => (
   <Provider store={store}>
-    <App />
+    <PaperProvider>
+      <App />
+    </PaperProvider>
   </Provider>
 );
 
