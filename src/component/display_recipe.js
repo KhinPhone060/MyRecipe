@@ -1,21 +1,28 @@
-import React from 'react';
-import {Text, View, Image, StyleSheet} from 'react-native';
-import {Card} from 'react-native-elements';
+import React, {useEffect} from 'react';
+import {
+  Image,
+  StyleSheet,
+  ScrollView,
+  FlatList,
+  View,
+  Text,
+} from 'react-native';
+import {Card, Button, Input} from 'react-native-elements';
+import {useDispatch, useSelector} from 'react-redux';
+import {getRecipe} from '../store/actions';
+import axios from 'axios';
 
 const DisplayRecipe = () => {
+  const recipes = useSelector(state => state.recipes);
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch(getRecipe());
+  }, [dispatch]);
+
   return (
     <View>
-      <Card containerStyle={{borderRadius: 25, ...styles.shadow}}>
-        <Card.Title>Recipe Name</Card.Title>
-        <Card.Divider />
-        <Image
-          style={{width: 330, height: 200, borderRadius: 20}}
-          resizeMode="cover"
-          source={{
-            uri: 'https://realfood.tesco.com/media/images/RFO-1400x919-classic-chocolate-mousse-69ef9c9c-5bfb-4750-80e1-31aafbd80821-0-1400x919.jpg',
-          }}
-        />
-      </Card>
+      <Input placeholder="Hello" />
     </View>
   );
 };

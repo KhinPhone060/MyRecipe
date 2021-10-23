@@ -1,21 +1,18 @@
+import axios from 'axios';
 export function getRecipe() {
-  const request = fetch(
-    'https://spoonacular-recipe-food-nutrition-v1.p.rapidapi.com/recipes/479101/information',
-    {
-      method: 'GET',
-      headers: {
-        'x-rapidapi-host':
-          'spoonacular-recipe-food-nutrition-v1.p.rapidapi.com',
-        'x-rapidapi-key': '34c7de6165msh7590624f4d29298p17edcejsn257308d89ee1',
-      },
+  const options = {
+    method: 'GET',
+    url: 'https://tasty.p.rapidapi.com/feeds/list',
+    params: {size: '20', timezone: '+0700', vegetarian: 'false', from: '0'},
+    headers: {
+      'x-rapidapi-host': 'tasty.p.rapidapi.com',
+      'x-rapidapi-key': '34c7de6165msh7590624f4d29298p17edcejsn257308d89ee1',
     },
-  )
-    .then(response => {
-      console.log(response);
-    })
-    .catch(err => {
-      console.error(err);
-    });
+  };
+  const request = axios
+    .request(options)
+    .then(response => response.data)
+    .catch(error => console.log(error));
   return {
     type: 'GET_RECIPE',
     payload: request,
