@@ -2,7 +2,7 @@ import React from 'react';
 import {Component} from 'react';
 import {SafeAreaView, View, Text} from 'react-native';
 import {connect} from 'react-redux';
-import AuthScreen from './component/authScreen';
+import AuthScreen from './component/authenticate';
 import HomeScreen from './component/home';
 
 class App extends Component {

@@ -1,4 +1,5 @@
 import axios from 'axios';
+import * as api from '../api';
 export function getRecipe() {
   const options = {
     method: 'GET',
@@ -16,5 +17,19 @@ export function getRecipe() {
   return {
     type: 'GET_RECIPE',
     payload: request,
+  };
+}
+
+export function Register() {
+  return {
+    type: 'REGISTER_USER',
+    payload: api.registerUser,
+  };
+}
+
+export function Login() {
+  return {
+    type: 'LOGIN_USER',
+    payload: api.loginUser,
   };
 }

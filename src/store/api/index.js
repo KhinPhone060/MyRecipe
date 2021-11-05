@@ -1,18 +1,26 @@
 import axios from 'axios';
-export const getRecipeInfo = () => {
-  const options = {
-    method: 'GET',
-    url: 'https://love-calculator.p.rapidapi.com/getPercentage',
-    params: {sname: 'Alice', fname: 'John'},
-    headers: {
-      'x-rapidapi-host': 'love-calculator.p.rapidapi.com',
-      'x-rapidapi-key': '34c7de6165msh7590624f4d29298p17edcejsn257308d89ee1',
-    },
-  };
-  axios
-    .request(options)
-    .then(response => response.data)
-    .catch(function (error) {
-      console.error(error);
-    });
+import auth from '@react-native-firebase/auth';
+
+export const registerUser = async ({email, password}) => {
+  try {
+    await auth().createUserWithEmailAndPassword(email, password);
+  } catch (error) {
+    console.log(error);
+  }
+};
+
+export const loginUser = async ({email, password}) => {
+  try {
+    await auth().signInWithEmailAndPassword(email, password);
+  } catch (error) {
+    console.log(error);
+  }
+};
+
+export const LogoutUser = async () => {
+  try {
+    await auth().signOut();
+  } catch (error) {
+    console.log(error);
+  }
 };
